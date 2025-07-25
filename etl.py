@@ -9,7 +9,7 @@ from sqlalchemy import delete
 from app.database import async_session, engine
 from app.models import Provider
 
-# ✅ Clean, fast CSV load
+
 def load_data():
     try:
         df = pd.read_csv(
@@ -31,7 +31,7 @@ def load_data():
     return df
 
 
-# ✅ Async ETL insert logic
+
 async def run_etl():
     df = load_data()
 
@@ -44,12 +44,12 @@ async def run_etl():
                 provider_city=row.provider_city,
                 provider_state=row.provider_state,
                 provider_zip_code=row.provider_zip_code,
-                #ms_drg_definition=row.ms_drg_definition,
-                #total_discharges=int(row.total_discharges),
-                #average_covered_charges=float(row.average_covered_charges),
-                #average_total_payments=float(row.average_total_payments),
-                #average_medicare_payments=float(row.average_medicare_payments),
-                #rating=random.randint(1, 10)  # generate mock rating
+                ms_drg_definition=row.ms_drg_definition,
+                total_discharges=int(row.total_discharges),
+                average_covered_charges=float(row.average_covered_charges),
+                average_total_payments=float(row.average_total_payments),
+                average_medicare_payments=float(row.average_medicare_payments),
+                rating=random.randint(1, 10)  # generate mock rating
             )
             providers.append(provider)
         except Exception as e:
@@ -57,7 +57,7 @@ async def run_etl():
             continue
 
     async with async_session() as session:
-        # Optional: Wipe existing data
+        
         await session.execute(delete(Provider))
 
         session.add_all(providers)
@@ -65,9 +65,8 @@ async def run_etl():
         print(f"✅ Inserted {len(providers)} providers.")
 
 
-# ✅ Run the ETL
 if __name__ == "__main__":
     try:
         asyncio.run(run_etl())
     except Exception as e:
-        print(f"❌ ETL failed: {e}")
+        print(f" ETL failed: {e}")
