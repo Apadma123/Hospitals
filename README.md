@@ -27,7 +27,14 @@ A minimal FastAPI-based web service that lets patients search hospitals by DRG c
 
 ### 1. Clone and Set Up Environment
 
-```bash
+
 git clone https://github.com/your-username/healthcare-cost-navigator.git
 cd healthcare-cost-navigator
 cp .env.example .env
+
+
+TEST
+- Commads i Used
+- source .venv activated
+- uvicorn app.main:app --reload
+
