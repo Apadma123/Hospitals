@@ -1,4 +1,4 @@
-Note: I havenot adde .vev files here while pushing i got error so i directly uploaded all my files some files 
+Note: I havenot added .vev files here while pushing i got error so i directly uploaded all my files some files 
 #  Healthcare Cost Navigator 
 
 A minimal FastAPI-based web service that lets patients search hospitals by DRG code, ZIP code, and radius. It includes estimated prices, quality ratings, and a natural language AI assistant powered by OpenAI.
